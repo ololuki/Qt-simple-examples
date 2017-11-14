@@ -6,8 +6,6 @@ CONFIG += console
 TARGET = TemplateProj
 TEMPLATE = app
 
-DESTDIR = $$PWD/../build
-
 HEADERS += \
     Calculator.h
 
