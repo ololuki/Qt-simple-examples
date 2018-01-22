@@ -8,17 +8,15 @@ int main()
 {
 	QVector<QObject*> tests;
 	
-	FooTest fooTest;
-	BarTest barTest;
+	tests.append(new FooTest);
+	tests.append(new BarTest);
 	
-	tests.append(&fooTest);
-	tests.append(&barTest);
-	
-	for(int i = 0; i < tests.length(); i++)
+	int result = 0;
+	for (int i = 0; i < tests.length(); i++)
 	{
-		int result = QTest::qExec(tests[i]);
-		if (result) return result;
+		result = QTest::qExec(tests[i]);
+		if (result) break;
 	}
-	
-	return 0;
+	qDeleteAll(tests);
+	return result;
 }
